@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav'
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
+import CategorySearch from './categorySearch'
 class Home extends React.Component{
 
 
@@ -24,6 +25,7 @@ return (
             <Button variant="outline-info">Search</Button>
         </Form>
     </Navbar>
+    <CategorySearch/>
     <br />
     <Navbar bg="primary" variant="dark">
         <Navbar.Brand href="#home">Navbar</Navbar.Brand>
