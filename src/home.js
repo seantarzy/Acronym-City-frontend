@@ -21,7 +21,7 @@ class Home extends React.Component{
         }
         handleSubmit=(e)=>{
             e.preventDefault()
-            this.getTheInitials(this.state.searchPhrase)
+            let initials = this.getTheInitials(this.state.searchPhrase)
         }
 
         getTheInitials(stringPhrase){
