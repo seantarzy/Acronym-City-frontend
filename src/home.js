@@ -19,6 +19,19 @@ class Home extends React.Component{
         this.setState({ searchPhrase: e.target.value})
          console.log(this.state)
         }
+        handleSubmit=(e)=>{
+            e.preventDefault()
+            this.getTheInitials(this.state.searchPhrase)
+        }
+
+        getTheInitials(stringPhrase){
+            let initialsArray = []
+           let stringArray = stringPhrase.split(' ')
+           for(let i = 0; i<stringArray.length; i++){
+               initialsArray.push(stringArray[i][0].toLowerCase())
+        }
+        return initialsArray
+    }
 render(){
 
 return (
@@ -28,10 +41,10 @@ return (
         <Nav className="mr-auto">
             <Nav>Type in your Phrase</Nav>
         </Nav>
-        <Form inline>
+            <Form inline onSubmit={(e)=>this.handleSubmit(e)} >
             <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange = {(e) =>this.handleChange(e)}/>
-            <Button variant="outline-info">Search</Button>
-        </Form>
+                <Button variant="outline-info" >Search</Button>
+        </Form >
     </Navbar>
     <br />
     </>
