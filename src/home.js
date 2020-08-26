@@ -17,7 +17,7 @@ class Home extends React.Component{
  
     handleChange=(e)=>{
         e.preventDefault()
-    this.setState({ searchPhrase: e.target.value})
+        this.setState({ searchPhrase: e.target.value})
         console.log(this.state)
     }
 
@@ -27,6 +27,8 @@ class Home extends React.Component{
         fetchQuery(initials)
         .then(r => {
             console.log(r)
+            var p = document.getElementById('result')
+            p.innerText = r['result']
         })
         // console.log(initials)
     }
@@ -54,6 +56,7 @@ class Home extends React.Component{
                 <Button variant="outline-info" type='submit'>Search</Button>
             </Form >
         </Navbar>
+        <p id="result"></p>
         <br />
         </>
     )}
