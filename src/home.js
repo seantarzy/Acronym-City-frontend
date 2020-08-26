@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import state from 'react'
+import { fetchQuery } from './services/utils'
 class Home extends React.Component{
 
     state = {
@@ -23,7 +24,11 @@ class Home extends React.Component{
     handleSubmit=(e)=>{
         e.preventDefault()
         let initials = this.getTheInitials(this.state.searchPhrase)
-        console.log(initials)
+        fetchQuery(initials)
+        .then(r => {
+            console.log(r)
+        })
+        // console.log(initials)
     }
 
     getTheInitials(stringPhrase){
