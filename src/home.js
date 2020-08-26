@@ -14,51 +14,44 @@ class Home extends React.Component{
          searchPhrase: ""
      }
  
-        handleChange=(e)=>{
-          e.preventDefault()
-        this.setState({ searchPhrase: e.target.value})
-         console.log(this.state)
-        }
-        handleSubmit=(e)=>{
-            e.preventDefault()
-            let initials = this.getTheInitials(this.state.searchPhrase)
-            console.log(initials)
-        }
+    handleChange=(e)=>{
+        e.preventDefault()
+    this.setState({ searchPhrase: e.target.value})
+        console.log(this.state)
+    }
 
-        getTheInitials(stringPhrase){
-            let initialsArray = []
-           let stringArray = stringPhrase.split(' ')
-           for(let i = 0; i<stringArray.length; i++){
-               initialsArray.push(stringArray[i][0].toLowerCase())
+    handleSubmit=(e)=>{
+        e.preventDefault()
+        let initials = this.getTheInitials(this.state.searchPhrase)
+        console.log(initials)
+    }
+
+    getTheInitials(stringPhrase){
+        let initialsArray = []
+        let stringArray = stringPhrase.split(' ')
+        for(let i = 0; i<stringArray.length; i++){
+            initialsArray.push(stringArray[i][0].toLowerCase())
         }
         return initialsArray
     }
-render(){
 
-return (
-    <>
-    <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home"></Navbar.Brand>
-        <Nav className="mr-auto">
+    render(){
+
+    return (
+        <>
+        <Navbar bg="dark" variant="dark">
+            <Navbar.Brand href="#home"></Navbar.Brand>
+            <Nav className="mr-auto">
             <Nav>Type in your Phrase</Nav>
-        </Nav>
+            </Nav>
             <Form inline onSubmit={(e)=>this.handleSubmit(e)} >
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange = {(e) =>this.handleChange(e)}/>
-                <Button variant="outline-info" >Search</Button>
-        </Form >
-    </Navbar>
-    <br />
-    </>
-)
-
-
-
-}
-
-
-
-
-
+                <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange = {(e) =>this.handleChange(e)}/>
+                <Button variant="outline-info" type='submit'>Search</Button>
+            </Form >
+        </Navbar>
+        <br />
+        </>
+    )}
 }
 
 export default Home
