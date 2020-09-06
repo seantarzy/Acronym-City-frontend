@@ -23,8 +23,8 @@ class Home extends React.Component{
 
     handleSubmit=(e)=>{
         e.preventDefault()
-        let initials = this.getTheInitials(this.state.searchPhrase)
-        fetchQuery(initials)
+        // let initials = this.getTheInitials(this.state.searchPhrase)
+        fetchQuery(this.state.searchPhrase)
         .then(r => {
             console.log(r)
             var p = document.getElementById('result')
@@ -33,14 +33,14 @@ class Home extends React.Component{
         // console.log(initials)
     }
 
-    getTheInitials(stringPhrase){
-        let initialsArray = []
-        let stringArray = stringPhrase.split(' ')
-        for(let i = 0; i<stringArray.length; i++){
-            initialsArray.push(stringArray[i][0].toLowerCase())
-        }
-        return initialsArray
-    }
+    // getTheInitials(stringPhrase){
+    //     let initialsArray = []
+    //     let stringArray = stringPhrase.split(' ')
+    //     for(let i = 0; i<stringArray.length; i++){
+    //         initialsArray.push(stringArray[i][0].toLowerCase())
+    //     }
+    //     return initialsArray
+    // }
 
     render(){
 
