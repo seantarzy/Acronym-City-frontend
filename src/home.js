@@ -42,7 +42,8 @@ class Home extends React.Component {
   }
 
   handleLyrics = (lyrics) =>{
-      let lyricsDiv = document.getElementById('lyrics')
+    let lyricsDiv = document.getElementById('lyrics')
+    if(lyrics){
       let p1 = document.createElement('p')
       p1.innerText = lyrics[0]
     lyricsDiv.appendChild(p1)
@@ -52,6 +53,12 @@ class Home extends React.Component {
        let p2 = document.createElement("p");
        p2.innerText = lyrics[2]
        lyricsDiv.appendChild(p2)
+    }
+    else{
+      let error = document.createElement('p')
+      error.innerText = 'Unable to match song to text input.'
+      lyricsDiv.appendChild(error)
+    }
 
   }
 
