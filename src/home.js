@@ -19,9 +19,15 @@ class Home extends React.Component {
     console.log(this.state);
   };
 
-  handleLyrics = (lyrics) =>{
+  handleLyrics = (lyrics, song_name, artist) =>{
     let lyricsDiv = document.getElementById('lyrics')
     if(lyrics){
+      let name = document.createElement("p");
+      name.innerText = song_name
+      lyricsDiv.append(name)
+      let author = document.createElement("p");
+      author.innerText = artist
+      lyricsDiv.append(author);
       let p1 = document.createElement('p')
       p1.innerText = lyrics[0]
       lyricsDiv.appendChild(p1)
@@ -42,9 +48,15 @@ class Home extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    let lyricsDiv = document.getElementById('lyrics')
+    let loading = document.createElement('img');
+    lyricsDiv.innerText = 'Loading...'
+    loading.src = "https://media.giphy.com/media/QpWDP1YMziaQw/giphy.gif";
+    lyricsDiv.append(loading)
     fetchQuery(this.state.searchPhrase).then((r) => {
       console.log(r.result)
-      this.handleLyrics(r.result.lyrics_array)
+      lyricsDiv.innerText = "";
+      this.handleLyrics(r.result.lyrics_array, r.result.song_title, r.result.artist)
     });
   };
 
